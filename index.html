@@ -75,6 +75,7 @@
             display: inline-block;
             font-size: 1.05rem;
             transition: 0.2s;
+            cursor: pointer;
         }
         .nav-bar a:hover {
             text-decoration: underline;
@@ -159,17 +160,47 @@
             border: 1px solid #cccccc;
             background: #fefefe;
         }
-        .media-block audio, .media-block video {
+        .media-block audio {
             width: 100%;
             max-width: 550px;
             margin: 12px 0;
             display: block;
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            margin: 12px 0;
+            background: #000000;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
         .media-title {
             font-weight: 700;
             font-size: 1.1rem;
             margin-bottom: 8px;
             color: #000000;
+        }
+
+        .course-highlight {
+            background: #f8f8f8;
+            padding: 14px 18px;
+            border-left: 4px solid #000000;
+            margin: 20px 0;
+        }
+
+        /* Section visibility for navigation */
+        .page-section {
+            display: block;
+        }
+        .hidden-section {
+            display: none;
         }
 
         footer {
@@ -203,136 +234,224 @@
     <!-- Header -->
     <h1>LingoSphere Premium</h1>
 
-    <!-- Navigation -->
+    <!-- Navigation with working links (scrolls to sections) -->
     <div class="nav-bar">
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
-        <a href="#">Gallery</a>
+        <a href="#" onclick="showSection('home'); return false;">Home</a>
+        <a href="#" onclick="showSection('about'); return false;">About</a>
+        <a href="#" onclick="showSection('services'); return false;">Services</a>
+        <a href="#" onclick="showSection('contact'); return false;">Contact</a>
+        <a href="#" onclick="showSection('gallery'); return false;">Gallery</a>
     </div>
 
-    <!-- Main purpose paragraph -->
-    <h2>The purpose of this website is to educate people about languages and global communication through LingoSphere.</h2>
-    <p>This website provides learning resources such as tutorials, vocabulary notes, articles, and interactive language exercises. The website helps beginners understand modern and ancient languages, from Spanish to Ancient Egyptian Hieroglyphs. This website promotes awareness of linguistic diversity and cultural heritage in the modern world. The website encourages problem-solving, creativity, and cross-cultural thinking skills. This website supports students and learners who want to build careers in translation, linguistics, and global communication. The website creates a platform where users can share ideas, knowledge, and experiences related to language learning. To support academic growth. The website can provide career guidance, interview tips, project ideas, and information about language professions.</p>
+    <!-- HOME SECTION (visible by default) -->
+    <div id="home-section" class="page-section">
+        <h2>The purpose of this website is to educate people about languages and global communication through LingoSphere.</h2>
+        <p>This website provides learning resources such as tutorials, vocabulary notes, articles, and interactive language exercises. The website helps beginners understand modern and ancient languages, from Spanish to Ancient Egyptian Hieroglyphs. This website promotes awareness of linguistic diversity and cultural heritage in the modern world. The website encourages problem-solving, creativity, and cross-cultural thinking skills. This website supports students and learners who want to build careers in translation, linguistics, and global communication. The website creates a platform where users can share ideas, knowledge, and experiences related to language learning. To support academic growth. The website can provide career guidance, interview tips, project ideas, and information about language professions.</p>
 
-    <!-- Language Topics -->
-    <h2>Language Learning Topics</h2>
-    <ul>
-        <li>Modern Languages</li>
-        <li>Classical Languages</li>
-        <li>Ancient Scripts</li>
-        <li>Pronunciation and Speaking</li>
-        <li>Cultural Immersion</li>
-    </ul>
+        <!-- Language Topics -->
+        <h2>Language Learning Topics</h2>
+        <ul>
+            <li>Modern Languages</li>
+            <li>Classical Languages</li>
+            <li>Ancient Scripts</li>
+            <li>Pronunciation and Speaking</li>
+            <li>Cultural Immersion</li>
+        </ul>
 
-    <!-- Steps to Learn a Language -->
-    <h2>Steps to Learn a Language with LingoSphere</h2>
-    <ol>
-        <li>Create your free account</li>
-        <li>Select your target language</li>
-        <li>Study interactive lessons and flashcards</li>
-        <li>Practice with AI pronunciation coach</li>
-        <li>Join global conversation groups</li>
-    </ol>
+        <!-- Steps to Learn a Language -->
+        <h2>Steps to Learn a Language with LingoSphere</h2>
+        <ol>
+            <li>Create your free account</li>
+            <li>Select your target language</li>
+            <li>Study interactive lessons and flashcards</li>
+            <li>Practice with AI pronunciation coach</li>
+            <li>Join global conversation groups</li>
+        </ol>
 
-    <!-- EXACTLY 4 PICTURES (Language Learning Gallery) -->
-    <h2>Language Learning Gallery</h2>
-    <div class="image-gallery">
-        <div class="img-card">
-            <img src="https://picsum.photos/id/104/400/220" alt="Japanese Language">
-            <div class="img-caption">Japanese Writing System</div>
+        <!-- EXACTLY 4 PICTURES (Language Learning Gallery) -->
+        <h2>Language Learning Gallery</h2>
+        <div class="image-gallery">
+            <div class="img-card">
+                <img src="https://picsum.photos/id/104/400/220" alt="Japanese Language">
+                <div class="img-caption">Japanese Writing System</div>
+            </div>
+            <div class="img-card">
+                <img src="https://picsum.photos/id/96/400/220" alt="Arabic Calligraphy">
+                <div class="img-caption">Arabic Calligraphy</div>
+            </div>
+            <div class="img-card">
+                <img src="https://picsum.photos/id/29/400/220" alt="Ancient Greek and Latin">
+                <div class="img-caption">Ancient Greek and Latin</div>
+            </div>
+            <div class="img-card">
+                <img src="https://picsum.photos/id/159/400/220" alt="Mandarin Chinese">
+                <div class="img-caption">Mandarin Chinese Characters</div>
+            </div>
         </div>
-        <div class="img-card">
-            <img src="https://picsum.photos/id/96/400/220" alt="Arabic Calligraphy">
-            <div class="img-caption">Arabic Calligraphy</div>
+
+        <!-- Language Fields (nested list) -->
+        <h2>Language Fields</h2>
+        <ul>
+            <li>Modern Languages  
+                <ul>
+                    <li>English</li>
+                    <li>Spanish</li>
+                    <li>French</li>
+                    <li>Kiswahili</li>
+                </ul>
+            </li>
+            <li>Classical Languages  
+                <ul>
+                    <li>Greek</li>
+                    <li>Latin</li>
+                    <li>Sanskrit</li>
+                </ul>
+            </li>
+            <li>Ancient Scripts  
+                <ul>
+                    <li>Ancient Egyptian Hieroglyphs</li>
+                    <li>Old Norse Runes</li>
+                </ul>
+            </li>
+            <li>Asian Languages  
+                <ul>
+                    <li>Japanese</li>
+                    <li>Mandarin Chinese</li>
+                    <li>Korean</li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- 1 TABLE: Popular Language Courses -->
+        <h2>Popular Language Courses</h2>
+        <p>LingoSphere Courses and Their Applications</p>
+        <table>
+            <thead>
+                <tr><th>Course ID</th><th>Course Name</th><th>Duration</th><th>Level</th><th>Application</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>LAN101</td><td>Conversational Spanish</td><td>10 Weeks</td><td>Beginner</td><td>Travel and Business</td></tr>
+                <tr><td>LAN102</td><td>French Pronunciation and Culture</td><td>8 Weeks</td><td>Beginner</td><td>Diplomacy and Art</td></tr>
+                <tr><td>LAN201</td><td>Ancient Egyptian Hieroglyphs</td><td>14 Weeks</td><td>Intermediate</td><td>Archaeology and History</td></tr>
+                <tr><td>LAN202</td><td>Japanese for Beginners</td><td>12 Weeks</td><td>Beginner</td><td>Tech and Anime Industry</td></tr>
+                <tr><td>LAN301</td><td>Latin and Greek Roots</td><td>16 Weeks</td><td>Advanced</td><td>Linguistics and Medicine</td></tr>
+            </tbody>
+        </table>
+
+        <!-- 1 AUDIO: Introduction to LingoSphere Audio -->
+        <h2>Introduction to LingoSphere Audio</h2>
+        <div class="media-block">
+            <div class="media-title">Language Learning Audio Guide</div>
+            <audio controls>
+                <source src="#" type="audio/mpeg">
+                Your browser does not support the audio element. Local audio file reference.
+            </audio>
+            <p>0:00 / 6:12 - Welcome to LingoSphere language learning audio guide</p>
         </div>
-        <div class="img-card">
-            <img src="https://picsum.photos/id/29/400/220" alt="Ancient Greek and Latin">
-            <div class="img-caption">Ancient Greek and Latin</div>
+
+        <!-- 1 PROMO VIDEO from YouTube -->
+        <h2>Language Learning Promo Video</h2>
+        <div class="media-block">
+            <div class="media-title">LingoSphere Official Trailer</div>
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/d0yGdNEWdn0?rel=0" 
+                    title="LingoSphere language learning promo video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p>Watch this inspiring video about language learning and discover how LingoSphere transforms your journey.</p>
         </div>
-        <div class="img-card">
-            <img src="https://picsum.photos/id/159/400/220" alt="Mandarin Chinese">
-            <div class="img-caption">Mandarin Chinese Characters</div>
+
+        <!-- Introduction to LingoSphere section -->
+        <h2>Introduction to LingoSphere</h2>
+        <div class="course-highlight">
+            <p>Map of World Languages - Domain of Linguistics - THEORETICAL LINGUISTICS - APPLIED LANGUAGE LEARNING - HISTORICAL LINGUISTICS - COMPARATIVE PHILOLOGY - LANGUAGE ACQUISITION - SOCIOLINGUISTICS - COMPUTATIONAL LINGUISTICS - LANGUAGE TECHNOLOGY - LINGOSPHERE GLOBAL - LINGOSPHERE PREMIUM - MODERN LANGUAGES - ANCIENT SCRIPTS - LANGUAGE EXCHANGE - CULTURAL IMMERSION</p>
+            <p style="margin-top:12px;">LingoSphere Collaborative Platform - Learn languages for free, connect with native speakers, and access expert-led courses.</p>
         </div>
     </div>
 
-    <!-- Language Fields (nested list) -->
-    <h2>Language Fields</h2>
-    <ul>
-        <li>Modern Languages  
-            <ul>
-                <li>English</li>
-                <li>Spanish</li>
-                <li>French</li>
-                <li>Kiswahili</li>
-            </ul>
-        </li>
-        <li>Classical Languages  
-            <ul>
-                <li>Greek</li>
-                <li>Latin</li>
-                <li>Sanskrit</li>
-            </ul>
-        </li>
-        <li>Ancient Scripts  
-            <ul>
-                <li>Ancient Egyptian Hieroglyphs</li>
-                <li>Old Norse Runes</li>
-            </ul>
-        </li>
-        <li>Asian Languages  
-            <ul>
-                <li>Japanese</li>
-                <li>Mandarin Chinese</li>
-                <li>Korean</li>
-            </ul>
-        </li>
-    </ul>
-
-    <!-- 1 TABLE: Popular Language Courses -->
-    <h2>Popular Language Courses</h2>
-    <p>LingoSphere Courses and Their Applications</p>
-    <table>
-        <thead>
-            <tr><th>Course ID</th><th>Course Name</th><th>Duration</th><th>Level</th><th>Application</th></tr>
-        </thead>
-        <tbody>
-            <tr><td>LAN101</td><td>Conversational Spanish</td><td>10 Weeks</td><td>Beginner</td><td>Travel and Business</td></tr>
-            <tr><td>LAN102</td><td>French Pronunciation and Culture</td><td>8 Weeks</td><td>Beginner</td><td>Diplomacy and Art</td></tr>
-            <tr><td>LAN201</td><td>Ancient Egyptian Hieroglyphs</td><td>14 Weeks</td><td>Intermediate</td><td>Archaeology and History</td></tr>
-            <tr><td>LAN202</td><td>Japanese for Beginners</td><td>12 Weeks</td><td>Beginner</td><td>Tech and Anime Industry</td></tr>
-            <tr><td>LAN301</td><td>Latin and Greek Roots</td><td>16 Weeks</td><td>Advanced</td><td>Linguistics and Medicine</td></tr>
-        </tbody>
-    </table>
-
-    <!-- 1 AUDIO: Introduction to LingoSphere Audio (using local reference as per document) -->
-    <h2>Introduction to LingoSphere Audio</h2>
-    <div class="media-block">
-        <div class="media-title">Introduction to Computer Science Audio</div>
-        <audio controls>
-            <source src="#" type="audio/mpeg">
-            Your browser does not support the audio element. Local audio file reference.
-        </audio>
-        <p>0:00 / 6:12 - Welcome to LingoSphere language learning audio guide</p>
+    <!-- ABOUT SECTION (hidden by default) -->
+    <div id="about-section" class="page-section hidden-section">
+        <h2>About LingoSphere</h2>
+        <p>LingoSphere Premium is a subscription-based platform that teaches both modern and ancient languages. Whether you want to learn a widely spoken language for travel and business or an ancient language for historical studies, LingoSphere provides expert lessons, exercises, quizzes, and interactive learning resources.</p>
+        <p>Our mission is to connect people through language and culture, breaking barriers and fostering global understanding. Founded in 2020, LingoSphere has helped over 500,000 learners achieve fluency in more than 20 languages.</p>
+        <h3>Our Team</h3>
+        <p>We are a diverse group of linguists, educators, and technologists passionate about making language learning accessible, engaging, and effective for everyone worldwide.</p>
     </div>
 
-    <!-- 1 PROMO VIDEO for language learning -->
-    <h2>Language Learning Promo Video</h2>
-    <div class="media-block">
-        <div class="media-title">Computer Science and Technology Video</div>
-        <video width="100%" controls style="max-width:650px; border:1px solid #aaa;">
-            <source src="#" type="video/mp4">
-            Your browser does not support the video tag. Local video file reference - language learning promo.
-        </video>
-        <p>0:00 / 0:10 - Discover how LingoSphere transforms language learning</p>
+    <!-- SERVICES SECTION (hidden by default) -->
+    <div id="services-section" class="page-section hidden-section">
+        <h2>Our Services</h2>
+        <ul>
+            <li>Interactive video lessons with native speakers</li>
+            <li>Personalized learning paths based on your goals</li>
+            <li>AI-powered pronunciation feedback</li>
+            <li>Live conversation practice groups</li>
+            <li>Cultural workshops and webinars</li>
+            <li>Certification programs for language proficiency</li>
+        </ul>
+        <h3>Subscription Plans</h3>
+        <p>Monthly: 12.99 EUR - Full access to all courses and features</p>
+        <p>Annual: 99 EUR - Save 36% + 2 months free</p>
+        <p>Lifetime: 299 EUR - One-time payment, unlimited access forever</p>
     </div>
 
-    <!-- Introduction to LingoSphere section (plain text, no emojis) -->
-    <h2>Introduction to LingoSphere</h2>
-    <div class="course-highlight" style="background: #f8f8f8; padding: 14px 18px; border-left: 4px solid #000000; margin: 20px 0;">
-        <p>Map of World Languages - Domain of Linguistics - THEORETICAL LINGUISTICS - APPLIED LANGUAGE LEARNING - HISTORICAL LINGUISTICS - COMPARATIVE PHILOLOGY - LANGUAGE ACQUISITION - SOCIOLINGUISTICS - COMPUTATIONAL LINGUISTICS - LANGUAGE TECHNOLOGY - LINGOSPHERE GLOBAL - LINGOSPHERE PREMIUM - MODERN LANGUAGES - ANCIENT SCRIPTS - LANGUAGE EXCHANGE - CULTURAL IMMERSION</p>
-        <p style="margin-top:12px;">LingoSphere Collaborative Platform - Learn languages for free, connect with native speakers, and access expert-led courses.</p>
+    <!-- CONTACT SECTION (hidden by default) -->
+    <div id="contact-section" class="page-section hidden-section">
+        <h2>Contact Us</h2>
+        <p>Have questions? Reach out to our support team.</p>
+        <p>Email: support@lingosphere.com</p>
+        <p>Phone: +1 (555) 123-4567</p>
+        <p>Address: 123 Language Lane, Global City, World 10001</p>
+        <h3>Follow Us</h3>
+        <p>Twitter: @LingoSphere</p>
+        <p>Instagram: @lingosphere_premium</p>
+        <p>Facebook: LingoSphere Official</p>
+        <p>Response time: Within 24 hours on business days.</p>
+    </div>
+
+    <!-- GALLERY SECTION (hidden by default - shows extra language images) -->
+    <div id="gallery-section" class="page-section hidden-section">
+        <h2>Language Gallery</h2>
+        <div class="image-gallery">
+            <div class="img-card">
+                <img src="https://picsum.photos/id/20/400/220" alt="French Language">
+                <div class="img-caption">French Language and Culture</div>
+            </div>
+            <div class="img-card">
+                <img src="https://picsum.photos/id/106/400/220" alt="Kiswahili">
+                <div class="img-caption">Kiswahili - East African Language</div>
+            </div>
+            <div class="img-card">
+                <img src="https://picsum.photos/id/91/400/220" alt="Ancient Egyptian">
+                <div class="img-caption">Ancient Egyptian Hieroglyphs</div>
+            </div>
+            <div class="img-card">
+                <img src="https://picsum.photos/id/26/400/220" alt="Old Norse">
+                <div class="img-caption">Old Norse Runes</div>
+            </div>
+        </div>
+        <div class="image-gallery">
+            <div class="img-card">
+                <img src="https://picsum.photos/id/42/400/220" alt="German">
+                <div class="img-caption">German Language</div>
+            </div>
+            <div class="img-card">
+                <img src="https://picsum.photos/id/155/400/220" alt="Russian">
+                <div class="img-caption">Russian Cyrillic</div>
+            </div>
+            <div class="img-card">
+                <img src="https://picsum.photos/id/169/400/220" alt="Italian">
+                <div class="img-caption">Italian Language</div>
+            </div>
+            <div class="img-card">
+                <img src="https://picsum.photos/id/175/400/220" alt="Portuguese">
+                <div class="img-caption">Portuguese Language</div>
+            </div>
+        </div>
+        <p>Explore our visual library of language learning resources and cultural content.</p>
     </div>
 
     <!-- Footer -->
@@ -341,5 +460,45 @@
         <p>Learn languages - explore cultures - connect with the world.</p>
     </footer>
 </div>
-</body>
-                                         </html>
+
+<script>
+    // Navigation function to show/hide sections
+    function showSection(sectionName) {
+        // Get all section elements
+        const homeSection = document.getElementById('home-section');
+        const aboutSection = document.getElementById('about-section');
+        const servicesSection = document.getElementById('services-section');
+        const contactSection = document.getElementById('contact-section');
+        const gallerySection = document.getElementById('gallery-section');
+        
+        // Hide all sections
+        if (homeSection) homeSection.classList.add('hidden-section');
+        if (aboutSection) aboutSection.classList.add('hidden-section');
+        if (servicesSection) servicesSection.classList.add('hidden-section');
+        if (contactSection) contactSection.classList.add('hidden-section');
+        if (gallerySection) gallerySection.classList.add('hidden-section');
+        
+        // Show the selected section
+        if (sectionName === 'home' && homeSection) {
+            homeSection.classList.remove('hidden-section');
+        } else if (sectionName === 'about' && aboutSection) {
+            aboutSection.classList.remove('hidden-section');
+        } else if (sectionName === 'services' && servicesSection) {
+            servicesSection.classList.remove('hidden-section');
+        } else if (sectionName === 'contact' && contactSection) {
+            contactSection.classList.remove('hidden-section');
+        } else if (sectionName === 'gallery' && gallerySection) {
+            gallerySection.classList.remove('hidden-section');
+        }
+        
+        // Scroll to top for better UX
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    // Ensure home section is visible on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        // Home section is visible by default, but ensure others are hidden
+        const homeSection = document.getElementById('home-section');
+        const aboutSection = document.getElementById('about-section');
+        const servicesSection = document.getElementById('services-section');
+        const contactSection = document.getElementByI
