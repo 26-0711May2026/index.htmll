@@ -5,322 +5,224 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LingoSphere Premium - Language Learning Hub</title>
     <style>
-        /* Global Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* ===== INTERNAL CSS ===== */
+        /* As taught in Week 4: Internal CSS is written inside <style> tag */
+        
+        /* Element Selector - Styles all elements of a specific type */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-            color: #333;
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Header */
-        h1 {
-            text-align: center;
-            color: #4a148c;
-            font-size: 2.8em;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            letter-spacing: 2px;
-        }
-
-        /* Navigation - Centered */
-        nav {
-            text-align: center;
-            background: linear-gradient(to right, #667eea, #764ba2);
-            padding: 15px 0;
-            border-radius: 50px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1em;
-            font-weight: 600;
-            padding: 10px 25px;
-            margin: 0 5px;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        nav a:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: scale(1.05);
-        }
-
-        hr {
-            border: none;
-            height: 3px;
-            background: linear-gradient(to right, #667eea, #764ba2, #667eea);
-            margin: 30px 0;
-            border-radius: 10px;
-        }
-
-        /* Section Headings */
-        h2 {
-            color: #4a148c;
-            margin: 25px 0 15px 0;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #667eea;
-            font-size: 1.8em;
-        }
-
-        h3 {
-            color: #5c2d91;
-            margin: 20px 0 10px 0;
-            font-size: 1.4em;
-        }
-
-        p {
-            line-height: 1.8;
-            margin-bottom: 15px;
-            color: #444;
-        }
-
-        /* Lists */
-        ul {
-            margin-left: 25px;
-            margin-bottom: 20px;
-        }
-
-        ul li {
-            margin: 8px 0;
-            color: #444;
-        }
-
-        ul ul {
-            margin-top: 5px;
-            margin-left: 30px;
-        }
-
-        ul ul li {
-            color: #555;
-            font-weight: 500;
-        }
-
-        /* ===== FULL PAGE TABLE ===== */
-        .table-container {
-            width: 100%;
-            overflow-x: auto;
-            margin: 20px 0;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .table-container h2 {
-            background: linear-gradient(to right, #667eea, #764ba2);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 15px 15px 0 0;
+            background-color: lightgray;
+            font-family: Arial;
             margin: 0;
-            border: none;
-            text-align: center;
-            font-size: 1.8em;
-            letter-spacing: 1px;
+            padding: 20px;
         }
 
+        /* Element Selector for headings */
+        h1 {
+            color: blue;
+            text-align: center;
+            font-size: 40px;
+            border: 2px solid black;
+            padding: 20px;
+            background-color: white;
+        }
+
+        /* Element Selector for h2 */
+        h2 {
+            color: blue;
+            font-family: Arial;
+            border-bottom: 2px solid black;
+            padding-bottom: 10px;
+        }
+
+        /* Element Selector for h3 */
+        h3 {
+            color: blue;
+            font-family: Arial;
+        }
+
+        /* Element Selector for paragraphs */
+        p {
+            font-size: 18px;
+            border: 1px solid black;
+            padding: 10px;
+            background-color: white;
+            font-family: Arial;
+        }
+
+        /* Class Selector - Styles multiple elements with same class */
+        .nav-links {
+            background-color: white;
+            padding: 15px;
+            border: 2px solid black;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .nav-links a {
+            color: blue;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        /* Class Selector for table */
+        .table-container {
+            background-color: white;
+            padding: 15px;
+            border: 2px solid black;
+        }
+
+        /* Element Selector for table */
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 1em;
+            font-family: Arial;
+            background-color: white;
         }
 
-        table thead th {
-            background: #4a148c;
+        /* Element Selector for table headers */
+        th {
+            background-color: blue;
             color: white;
-            padding: 15px 12px;
+            padding: 12px;
+            border: 1px solid black;
+            font-size: 18px;
+        }
+
+        /* Element Selector for table data */
+        td {
+            padding: 12px;
+            border: 1px solid black;
             text-align: left;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-size: 0.9em;
         }
 
-        /* Alternating row colors */
-        table tbody tr:nth-child(odd) {
-            background-color: #f3e5f5;
+        /* Class Selector - Alternating row colors using class */
+        .row-even {
+            background-color: lightgray;
         }
 
-        table tbody tr:nth-child(even) {
-            background-color: #e8d5f5;
+        .row-odd {
+            background-color: white;
         }
 
-        table tbody tr:hover {
-            background-color: #d1c4e9;
-            transition: background-color 0.3s ease;
-        }
-
-        table tbody td {
-            padding: 14px 12px;
-            border-bottom: 1px solid #ce93d8;
-            color: #333;
-        }
-
-        table tbody tr:last-child td {
-            border-bottom: none;
-        }
-
-        /* ===== IMAGES & VIDEOS GRID (2 rows x 2 columns) ===== */
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto auto;
-            gap: 25px;
-            margin: 25px 0;
-        }
-
-        .grid-item {
-            background: linear-gradient(145deg, #f8f0ff, #ede7f6);
-            border-radius: 15px;
-            padding: 15px;
+        /* ID Selector - Used for one unique element */
+        #table-heading {
+            color: blue;
             text-align: center;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 10px;
+            background-color: white;
+            border: 2px solid black;
         }
 
-        .grid-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+        /* Element Selector for list items */
+        ul {
+            font-family: Arial;
+            font-size: 18px;
+            background-color: white;
+            padding: 20px;
+            border: 1px solid black;
         }
 
-        .grid-item img,
-        .grid-item iframe {
+        ul li {
+            padding: 5px;
+        }
+
+        /* Nested lists styling */
+        ul ul {
+            background-color: lightgray;
+            border: none;
+            padding: 10px 20px;
+        }
+
+        /* Class Selector for grid items */
+        .grid-item {
+            background-color: white;
+            padding: 15px;
+            border: 2px solid black;
+            text-align: center;
+        }
+
+        .grid-item img {
+            border: 2px solid black;
             width: 100%;
+            max-width: 280px;
             height: auto;
-            border-radius: 12px;
-            border: 3px solid #ce93d8;
-            aspect-ratio: 16/10;
-            object-fit: cover;
-        }
-
-        .grid-item iframe {
-            aspect-ratio: 16/9;
-            border: 3px solid #ce93d8;
         }
 
         .grid-item b {
             display: block;
-            margin-top: 12px;
-            color: #4a148c;
-            font-size: 1em;
+            padding: 10px;
+            font-size: 18px;
         }
 
-        /* Audio player styling */
+        /* Class Selector for grid container */
+        .grid-container {
+            background-color: white;
+            padding: 15px;
+            border: 2px solid black;
+        }
+
+        /* Element Selector for audio */
         audio {
             width: 100%;
-            margin: 15px 0;
-            border-radius: 30px;
+            border: 1px solid black;
+            padding: 10px;
+            background-color: white;
         }
 
-        /* Footer */
-        footer {
-            background: linear-gradient(to right, #667eea, #764ba2);
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        footer p {
+        /* ID Selector for footer */
+        #footer {
+            background-color: blue;
             color: white;
-            margin: 5px 0;
-            font-weight: 600;
-            line-height: 1.6;
+            padding: 20px;
+            border: 2px solid black;
+            text-align: center;
+            font-family: Arial;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-
-            .container {
-                padding: 15px;
-            }
-
-            h1 {
-                font-size: 2em;
-            }
-
-            nav a {
-                display: inline-block;
-                padding: 8px 15px;
-                font-size: 0.9em;
-                margin: 3px;
-            }
-
-            .grid-container {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto;
-            }
-
-            table {
-                font-size: 0.85em;
-            }
-
-            table thead th,
-            table tbody td {
-                padding: 10px 8px;
-            }
-
-            .table-container h2 {
-                font-size: 1.3em;
-                padding: 12px 15px;
-            }
+        #footer p {
+            border: none;
+            background-color: transparent;
+            color: white;
+            font-size: 18px;
+            padding: 5px;
         }
 
-        @media (max-width: 480px) {
-            nav a {
-                font-size: 0.75em;
-                padding: 5px 10px;
-            }
+        /* Class Selector for horizontal rule */
+        .custom-hr {
+            border: 2px solid black;
+            background-color: black;
+            height: 3px;
+        }
 
-            h2 {
-                font-size: 1.3em;
-            }
+        /* Class Selector for links */
+        .section-link {
+            color: blue;
+            font-weight: bold;
+            text-decoration: none;
+        }
 
-            table {
-                font-size: 0.7em;
-            }
+        .section-link:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-
     <!-- Header -->
     <h1>🌍 LingoSphere Premium</h1>
 
-    <!-- Navigation - Centered with background -->
-    <nav>
-        <a href="#home">🏠 Home</a>
-        <a href="#about">📖 About</a>
-        <a href="#services">⚡ Services</a>
-        <a href="#contact">📞 Contact</a>
-        <a href="#gallery">🖼️ Gallery</a>
-    </nav>
+    <!-- Navigation - Centered using class selector -->
+    <p class="nav-links">
+        <a href="#home" class="section-link">Home</a> | 
+        <a href="#about" class="section-link">About</a> | 
+        <a href="#services" class="section-link">Services</a> | 
+        <a href="#contact" class="section-link">Contact</a> | 
+        <a href="#gallery" class="section-link">Gallery</a>
+    </p>
 
-    <hr>
+    <hr class="custom-hr">
 
     <!-- HOME SECTION -->
     <a name="home"></a>
@@ -370,9 +272,9 @@
         </li>
     </ul>
 
-    <!-- ===== FULL PAGE TABLE with heading, background color, row and column colors ===== -->
+    <!-- ===== FULL PAGE TABLE with heading, background color, rows and column colors ===== -->
     <div class="table-container">
-        <h2>📚 Popular Language Courses</h2>
+        <p id="table-heading">📚 Popular Language Courses</p>
         <table>
             <thead>
                 <tr>
@@ -384,11 +286,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr><td>LAN101</td><td>Conversational Spanish</td><td>10 Weeks</td><td>Beginner</td><td>Travel and Business</td></tr>
-                <tr><td>LAN102</td><td>French Pronunciation and Culture</td><td>8 Weeks</td><td>Beginner</td><td>Diplomacy and Art</td></tr>
-                <tr><td>LAN201</td><td>Ancient Egyptian Hieroglyphs</td><td>14 Weeks</td><td>Intermediate</td><td>Archaeology and History</td></tr>
-                <tr><td>LAN202</td><td>Japanese for Beginners</td><td>12 Weeks</td><td>Beginner</td><td>Tech and Anime Industry</td></tr>
-                <tr><td>LAN301</td><td>Latin and Greek Roots</td><td>16 Weeks</td><td>Advanced</td><td>Linguistics and Medicine</td></tr>
+                <tr class="row-even"><td>LAN101</td><td>Conversational Spanish</td><td>10 Weeks</td><td>Beginner</td><td>Travel and Business</td></tr>
+                <tr class="row-odd"><td>LAN102</td><td>French Pronunciation and Culture</td><td>8 Weeks</td><td>Beginner</td><td>Diplomacy and Art</td></tr>
+                <tr class="row-even"><td>LAN201</td><td>Ancient Egyptian Hieroglyphs</td><td>14 Weeks</td><td>Intermediate</td><td>Archaeology and History</td></tr>
+                <tr class="row-odd"><td>LAN202</td><td>Japanese for Beginners</td><td>12 Weeks</td><td>Beginner</td><td>Tech and Anime Industry</td></tr>
+                <tr class="row-even"><td>LAN301</td><td>Latin and Greek Roots</td><td>16 Weeks</td><td>Advanced</td><td>Linguistics and Medicine</td></tr>
             </tbody>
         </table>
     </div>
@@ -396,26 +298,28 @@
     <!-- ===== GRID: 2 rows x 2 columns (Images & Videos) ===== -->
     <h2>🎬 Language Learning Gallery</h2>
     <div class="grid-container">
-        <!-- Row 1, Col 1 - Image -->
-        <div class="grid-item">
-            <img src="https://picsum.photos/id/155/600/400" alt="Students learning languages in a classroom">
-            <b>Students practicing language together</b>
-        </div>
-        <!-- Row 1, Col 2 - Image -->
-        <div class="grid-item">
-            <img src="https://picsum.photos/id/15/600/400" alt="Person studying language with books and notes">
-            <b>Individual language study session</b>
-        </div>
-        <!-- Row 2, Col 1 - Video (YouTube embed) -->
-        <div class="grid-item">
-            <iframe src="https://www.youtube.com/embed/d0yGdNEWdn0?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <b>LingoSphere Official Trailer</b>
-        </div>
-        <!-- Row 2, Col 2 - Video (YouTube embed) -->
-        <div class="grid-item">
-            <iframe src="https://www.youtube.com/embed/B-HfOYUNtLU?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <b>Language Learning Tips & Techniques</b>
-        </div>
+        <table width="100%" border="0" cellpadding="10">
+            <tr>
+                <td width="50%" class="grid-item">
+                    <img src="https://picsum.photos/id/155/300/200" alt="Students learning languages in a classroom">
+                    <b>Students practicing language together</b>
+                </td>
+                <td width="50%" class="grid-item">
+                    <img src="https://picsum.photos/id/15/300/200" alt="Person studying language with books and notes">
+                    <b>Individual language study session</b>
+                </td>
+            </tr>
+            <tr>
+                <td width="50%" class="grid-item">
+                    <img src="https://picsum.photos/id/106/300/200" alt="Student using language app on tablet">
+                    <b>Digital language learning</b>
+                </td>
+                <td width="50%" class="grid-item">
+                    <img src="https://picsum.photos/id/169/300/200" alt="Group of people learning a new language">
+                    <b>Group language workshop</b>
+                </td>
+            </tr>
+        </table>
     </div>
 
     <!-- Audio -->
@@ -427,12 +331,20 @@
     </audio>
     <p>0:00 / 6:12 - Enjoy this classic French song that represents the beauty of the French language and culture.</p>
 
+    <!-- Promo Video -->
+    <h2>📺 Language Learning Promo Video</h2>
+    <p><b>LingoSphere Official Trailer</b></p>
+    <div style="background-color:white; padding:15px; border:2px solid black;">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/d0yGdNEWdn0?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p>Watch this inspiring video about language learning and discover how LingoSphere transforms your journey.</p>
+
     <!-- Introduction to LingoSphere -->
     <h2>Introduction to LingoSphere</h2>
     <p><b>Map of World Languages - Domain of Linguistics - THEORETICAL LINGUISTICS - APPLIED LANGUAGE LEARNING - HISTORICAL LINGUISTICS - COMPARATIVE PHILOLOGY - LANGUAGE ACQUISITION - SOCIOLINGUISTICS - COMPUTATIONAL LINGUISTICS - LANGUAGE TECHNOLOGY - LINGOSPHERE GLOBAL - LINGOSPHERE PREMIUM - MODERN LANGUAGES - ANCIENT SCRIPTS - LANGUAGE EXCHANGE - CULTURAL IMMERSION</b></p>
     <p>LingoSphere Collaborative Platform - Learn languages for free, connect with native speakers, and access expert-led courses.</p>
 
-    <hr>
+    <hr class="custom-hr">
 
     <!-- ABOUT SECTION -->
     <a name="about"></a>
@@ -440,7 +352,7 @@
     <p>LingoSphere Premium is a subscription-based platform that teaches both modern and ancient languages. Whether you want to learn a widely spoken language for travel and business or an ancient language for historical studies, LingoSphere provides expert lessons, exercises, quizzes, and interactive learning resources.</p>
     <p>Our mission is to connect people through language and culture, breaking barriers and fostering global understanding. Founded in 2020, LingoSphere has helped over 500,000 learners achieve fluency in more than 20 languages.</p>
 
-    <hr>
+    <hr class="custom-hr">
 
     <!-- SERVICES SECTION -->
     <a name="services"></a>
@@ -454,7 +366,7 @@
         <li>Certification programs for language proficiency</li>
     </ul>
 
-    <hr>
+    <hr class="custom-hr">
 
     <!-- CONTACT SECTION -->
     <a name="contact"></a>
@@ -464,44 +376,47 @@
     <p>Phone: 0707283661</p>
     <p>Address: 123 Language Lane, Global City, World 10001</p>
 
-    <hr>
+    <hr class="custom-hr">
 
-    <!-- GALLERY SECTION -->
+    <!-- GALLERY SECTION - additional language learning images -->
     <a name="gallery"></a>
     <h2>Language Gallery</h2>
     <h3>Language Learning in Action</h3>
 
-    <!-- Additional images in a grid row -->
     <div class="grid-container">
-        <div class="grid-item">
-            <img src="https://picsum.photos/id/106/600/400" alt="Student using language app on tablet">
-            <b>Digital language learning</b>
-        </div>
-        <div class="grid-item">
-            <img src="https://picsum.photos/id/169/600/400" alt="Group of people learning a new language">
-            <b>Group language workshop</b>
-        </div>
-        <div class="grid-item">
-            <img src="https://picsum.photos/id/26/600/400" alt="One-on-one language tutoring session">
-            <b>Personalized tutoring</b>
-        </div>
-        <div class="grid-item">
-            <img src="https://picsum.photos/id/91/600/400" alt="Language exchange between two people">
-            <b>Language exchange partners</b>
-        </div>
+        <table width="100%" border="0" cellpadding="10">
+            <tr>
+                <td width="50%" class="grid-item">
+                    <img src="https://picsum.photos/id/26/300/200" alt="One-on-one language tutoring session">
+                    <b>Personalized tutoring</b>
+                </td>
+                <td width="50%" class="grid-item">
+                    <img src="https://picsum.photos/id/91/300/200" alt="Language exchange between two people">
+                    <b>Language exchange partners</b>
+                </td>
+            </tr>
+            <tr>
+                <td width="50%" class="grid-item">
+                    <img src="https://picsum.photos/id/20/300/200" alt="Group conversation practice">
+                    <b>Conversation practice group</b>
+                </td>
+                <td width="50%" class="grid-item">
+                    <img src="https://picsum.photos/id/24/300/200" alt="Teacher assisting student with language learning">
+                    <b>Teacher and student language session</b>
+                </td>
+            </tr>
+        </table>
     </div>
 
     <p>Explore our visual library of language learning resources and cultural content.</p>
 
-    <hr>
+    <hr class="custom-hr">
 
     <!-- Footer -->
-    <footer>
+    <div id="footer">
         <p><b>2026 LingoSphere Premium | Empowering global citizens through language | Tutorials, audio lessons, podcasts and career guidance</b></p>
         <p><b>🌍 Learn languages - explore cultures - connect with the world.</b></p>
-    </footer>
-
-</div>
+    </div>
 
 </body>
         </html>
