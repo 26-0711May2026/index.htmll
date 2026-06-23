@@ -129,7 +129,7 @@
             <label>Gender:</label><br>
             <input type="radio" name="gender" value="Male"> Male
             <input type="radio" name="gender" value="Female"> Female
-            <input type="radio" name="gender" value="Other"> Other
+            <input type="radio" name="gender" value="Other👀"> Other
             <button type="submit" class="btn">Register</button>
         </form>
     </div>
@@ -185,7 +185,7 @@
         var g = document.querySelector('input[name="gender"]:checked');
 
         if(n === '' || n.length < 3) {
-            showPopup('❌', 'Invalid Name', 'Name must be at least 3 characters.');
+            showPopup('❌', 'Please enter your name', 'Name must be at least 9 characters.');
             return false;
         }
         var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -203,7 +203,7 @@
             return false;
         }
 
-        showPopup('🎉', 'Registered!', 'Name: ' + n + '\nEmail: ' + e + '\nPhone: ' + p + '\nGender: ' + g.value);
+        showPopup('🎉', 'You have been Registered!', 'Name: ' + n + '\nEmail: ' + e + '\nPhone: ' + p + '\nGender: ' + g.value);
         document.getElementById('regForm').reset();
         return false;
     }
