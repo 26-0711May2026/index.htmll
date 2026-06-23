@@ -5,137 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LingoSphere</title>
     <style>
-        body {
-            font-family: Arial;
-            background: #e6e6fa;
-            padding: 20px;
-        }
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-        }
-        h1 {
-            text-align: center;
-            color: #2e0a4e;
-        }
-        nav {
-            text-align: center;
-            background: #4a148c;
-            padding: 12px;
-            border-radius: 30px;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-            font-weight: bold;
-        }
-        nav a:hover {
-            background: #7b1fa2;
-            border-radius: 20px;
-        }
-        hr {
-            border: 2px solid #4a148c;
-            margin: 20px 0;
-        }
-        h2 {
-            color: #2e0a4e;
-            border-bottom: 2px solid #4a148c;
-            padding-bottom: 8px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th {
-            background: #6a1b9a;
-            color: white;
-            padding: 10px;
-            border: 1px solid #4a148c;
-        }
-        td {
-            padding: 10px;
-            border: 1px solid #4a148c;
-        }
-        tr:nth-child(odd) {
-            background: #f3e5f5;
-        }
-        tr:nth-child(even) {
-            background: #e1bee7;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin: 15px 0;
-        }
-        .item {
-            background: #f3e5f5;
-            padding: 10px;
-            border-radius: 10px;
-            border: 2px solid #4a148c;
-            text-align: center;
-        }
-        .item img, .item iframe {
-            width: 100%;
-            border-radius: 8px;
-            border: 2px solid #6a1b9a;
-        }
-        .item iframe {
-            height: 180px;
-        }
-        audio {
-            width: 100%;
-        }
-        .form-box {
-            background: #f3e5f5;
-            padding: 20px;
-            border-radius: 10px;
-            border: 2px solid #4a148c;
-            max-width: 500px;
-        }
-        .form-box input {
-            width: 100%;
-            padding: 8px;
-            border: 2px solid #6a1b9a;
-            border-radius: 8px;
-        }
-        .btn {
-            background: #4a148c;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 30px;
-            width: 100%;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background: #6a1b9a;
-        }
-        footer {
-            background: #4a148c;
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-        }
-        @media (max-width: 768px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-        }
+        body{font-family:Arial;background:#e6e6fa;padding:20px}
+        .container{max-width:1100px;margin:auto;background:white;padding:20px;border-radius:10px}
+        h1{text-align:center;color:#2e0a4e}
+        nav{text-align:center;background:#4a148c;padding:12px;border-radius:30px}
+        nav a{color:white;text-decoration:none;padding:8px 15px;font-weight:bold}
+        nav a:hover{background:#7b1fa2;border-radius:20px}
+        hr{border:2px solid #4a148c;margin:20px 0}
+        h2{color:#2e0a4e;border-bottom:2px solid #4a148c;padding-bottom:8px}
+        table{width:100%;border-collapse:collapse}
+        th{background:#6a1b9a;color:white;padding:10px;border:1px solid #4a148c}
+        td{padding:10px;border:1px solid #4a148c}
+        tr:nth-child(odd){background:#f3e5f5}
+        tr:nth-child(even){background:#e1bee7}
+        .grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:15px 0}
+        .item{background:#f3e5f5;padding:10px;border-radius:10px;border:2px solid #4a148c;text-align:center}
+        .item img,.item iframe{width:100%;border-radius:8px;border:2px solid #6a1b9a}
+        .item iframe{height:180px}
+        audio{width:100%}
+        .form-box{background:#f3e5f5;padding:20px;border-radius:10px;border:2px solid #4a148c;max-width:500px}
+        .form-box input{width:100%;padding:8px;border:2px solid #6a1b9a;border-radius:8px}
+        .btn{background:#4a148c;color:white;padding:10px;border:none;border-radius:30px;width:100%;font-weight:bold;cursor:pointer}
+        .btn:hover{background:#6a1b9a}
+        footer{background:#4a148c;color:white;padding:15px;border-radius:10px;text-align:center}
+        
+        /* Popup styles */
+        .popup{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:999;justify-content:center;align-items:center}
+        .popup-box{background:white;border-radius:15px;padding:30px;max-width:400px;width:90%;text-align:center;animation:slide 0.3s}
+        @keyframes slide{from{transform:translateY(-30px);opacity:0}to{transform:translateY(0);opacity:1}}
+        .popup-box h2{margin:10px 0;border:none}
+        .popup-box p{color:#555;margin:10px 0 20px}
+        .popup-box .close{background:#4a148c;color:white;padding:10px 30px;border:none;border-radius:30px;font-weight:bold;cursor:pointer}
+        .popup-box .close:hover{background:#6a1b9a}
+        .success .icon{color:#4CAF50}
+        .error .icon{color:#f44336}
+        .info .icon{color:#4a148c}
+        .icon{font-size:50px}
+        @media(max-width:768px){.grid{grid-template-columns:1fr}}
     </style>
 </head>
 <body>
 
 <div class="container">
-
     <h1>🌍 LingoSphere</h1>
-
     <nav>
         <a href="#home">Home</a>
         <a href="#about">About</a>
@@ -143,12 +55,11 @@
         <a href="#contact">Contact</a>
         <a href="#register">Register</a>
     </nav>
-
     <hr>
 
     <a name="home"></a>
     <h2>Welcome</h2>
-    <p>LingoSphere teaches modern and ancient languages. We provide tutorials, vocabulary, and interactive exercises.</p>
+    <p>LingoSphere teaches modern and ancient languages with tutorials and exercises.</p>
 
     <h2>Topics</h2>
     <ul>
@@ -159,8 +70,8 @@
     </ul>
 
     <!-- TABLE -->
-    <div style="border:2px solid #4a148c; border-radius:10px; overflow:hidden;">
-        <h2 style="background:#4a148c; color:white; padding:12px; margin:0; text-align:center;">📚 Courses</h2>
+    <div style="border:2px solid #4a148c;border-radius:10px;overflow:hidden">
+        <h2 style="background:#4a148c;color:white;padding:12px;margin:0;text-align:center">📚 Courses</h2>
         <table>
             <tr><th>Course</th><th>Duration</th><th>Level</th></tr>
             <tr><td>Spanish</td><td>10 Weeks</td><td>Beginner</td></tr>
@@ -169,39 +80,23 @@
         </table>
     </div>
 
-    <!-- GRID: 2 ROWS x 2 COLUMNS -->
+    <!-- GRID -->
     <h2>Gallery</h2>
     <div class="grid">
-        <div class="item">
-            <img src="https://picsum.photos/id/155/400/250" alt="Students">
-            <b>Students learning</b>
-        </div>
-        <div class="item">
-            <img src="https://picsum.photos/id/15/400/250" alt="Study">
-            <b>Individual study</b>
-        </div>
-        <div class="item">
-            <iframe src="https://www.youtube.com/embed/d0yGdNEWdn0?rel=0" allowfullscreen></iframe>
-            <b>LingoSphere Trailer</b>
-        </div>
-        <div class="item">
-            <iframe src="https://www.youtube.com/embed/MjZ1nV5EXmI?rel=0" allowfullscreen></iframe>
-            <b>Spanish Lesson</b>
-        </div>
+        <div class="item"><img src="https://picsum.photos/id/155/400/250"><b>Students learning</b></div>
+        <div class="item"><img src="https://picsum.photos/id/15/400/250"><b>Individual study</b></div>
+        <div class="item"><iframe src="https://www.youtube.com/embed/d0yGdNEWdn0?rel=0" allowfullscreen></iframe><b>Trailer</b></div>
+        <div class="item"><iframe src="https://www.youtube.com/embed/MjZ1nV5EXmI?rel=0" allowfullscreen></iframe><b>Spanish Lesson</b></div>
     </div>
 
     <!-- AUDIO -->
     <h2>🎵 French Song</h2>
-    <audio controls>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    </audio>
-
+    <audio controls><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"></audio>
     <hr>
 
     <a name="about"></a>
     <h2>About</h2>
     <p>Founded in 2020, LingoSphere has helped over 500,000 learners worldwide.</p>
-
     <hr>
 
     <a name="services"></a>
@@ -210,118 +105,108 @@
         <li>Video lessons</li>
         <li>Personalized learning</li>
         <li>Pronunciation feedback</li>
-        <li>Live practice groups</li>
+        <li>Live practice</li>
     </ul>
-
     <hr>
 
     <a name="contact"></a>
     <h2>Contact</h2>
     <p>Email: support@lingosphere.com</p>
     <p>Phone: 0707283661</p>
-
     <hr>
 
     <!-- FORM -->
     <a name="register"></a>
     <h2>📝 Register</h2>
     <div class="form-box">
-        <form id="registrationForm" onsubmit="return validateForm()">
+        <form id="regForm" onsubmit="return validate()">
             <label>Name:</label>
             <input type="text" id="name" placeholder="Full name">
-
             <label>Email:</label>
             <input type="email" id="email" placeholder="Email">
-
             <label>Phone:</label>
             <input type="tel" id="phone" placeholder="Phone">
-
             <label>Gender:</label><br>
             <input type="radio" name="gender" value="Male"> Male
             <input type="radio" name="gender" value="Female"> Female
             <input type="radio" name="gender" value="Other"> Other
-
             <button type="submit" class="btn">Register</button>
         </form>
     </div>
-
     <hr>
 
-    <!-- EXTRA GALLERY IMAGES -->
+    <!-- More images -->
     <h2>More Images</h2>
     <div class="grid">
-        <div class="item"><img src="https://picsum.photos/id/106/400/250" alt="Digital"><b>Digital learning</b></div>
-        <div class="item"><img src="https://picsum.photos/id/169/400/250" alt="Group"><b>Group workshop</b></div>
-        <div class="item"><img src="https://picsum.photos/id/26/400/250" alt="Tutor"><b>Tutoring</b></div>
-        <div class="item"><img src="https://picsum.photos/id/91/400/250" alt="Exchange"><b>Language exchange</b></div>
+        <div class="item"><img src="https://picsum.photos/id/106/400/250"><b>Digital learning</b></div>
+        <div class="item"><img src="https://picsum.photos/id/169/400/250"><b>Group workshop</b></div>
+        <div class="item"><img src="https://picsum.photos/id/26/400/250"><b>Tutoring</b></div>
+        <div class="item"><img src="https://picsum.photos/id/91/400/250"><b>Exchange</b></div>
     </div>
-
     <hr>
 
-    <footer>
-        <p>2026 LingoSphere | Learn languages, explore cultures.</p>
-    </footer>
+    <footer><p>2026 LingoSphere | Learn languages, explore cultures.</p></footer>
+</div>
 
+<!-- POPUP -->
+<div class="popup" id="popup">
+    <div class="popup-box" id="popupBox">
+        <div class="icon" id="popupIcon">🌍</div>
+        <h2 id="popupTitle">Welcome!</h2>
+        <p id="popupMsg">Hello!</p>
+        <button class="close" onclick="closePopup()">OK</button>
+    </div>
 </div>
 
 <script>
-    // ===== POP-UP WELCOME MESSAGE =====
+    function showPopup(icon, title, msg) {
+        document.getElementById('popupIcon').textContent = icon;
+        document.getElementById('popupTitle').textContent = title;
+        document.getElementById('popupMsg').textContent = msg;
+        document.getElementById('popup').style.display = 'flex';
+    }
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+    document.getElementById('popup').addEventListener('click', function(e) {
+        if(e.target === this) closePopup();
+    });
+
+    // Welcome
     window.onload = function() {
-    POP-UP ("🌍 Welcome to LingoSphere Premium!\n\nLearn languages, explore cultures, and connect with the world type shii.");
+        showPopup('🌍', 'Welcome!', 'Learn languages, explore cultures, connect with the world.');
     };
 
-    // ===== FORM VALIDATION =====
-    function validateForm() {
-        // Get form values
-        var name = document.getElementById('name').value.trim();
-        var email = document.getElementById('email').value.trim();
-        var phone = document.getElementById('phone').value.trim();
-        var gender = document.querySelector('input[name="gender"]:checked');
+    // Validate form
+    function validate() {
+        var n = document.getElementById('name').value.trim();
+        var e = document.getElementById('email').value.trim();
+        var p = document.getElementById('phone').value.trim();
+        var g = document.querySelector('input[name="gender"]:checked');
 
-        // Validate Name
-        if (name === '' || name.length < 3) {
-            alert('❌ Please enter a name (minimum 7 characters).');
-            document.getElementById('name').focus();
+        if(n === '' || n.length < 3) {
+            showPopup('❌', 'Invalid Name', 'Name must be at least 3 characters.');
             return false;
         }
-
-        // Validate Email
         var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (email === '' || !emailPattern.test(email)) {
-            alert('❌ Please enter a valid email address.');
-            document.getElementById('email').focus();
+        if(e === '' || !emailPattern.test(e)) {
+            showPopup('❌', 'Invalid Email', 'Enter a valid email address.');
+            return false;
+        }
+        var digits = p.replace(/\D/g, '');
+        if(p === '' || digits.length < 10) {
+            showPopup('❌', 'Invalid Phone', 'Phone must have at least 10 digits.');
+            return false;
+        }
+        if(!g) {
+            showPopup('❌', 'Gender Required', 'Please select your gender.');
             return false;
         }
 
-        // Validate Phone
-        var phoneDigits = phone.replace(/\D/g, '');
-        if (phone === '' || phoneDigits.length < 10) {
-            alert('❌ Please enter a valid phone number (minimum 10 digits).');
-            document.getElementById('phone').focus();
-            return false;
-        }
-
-        // Validate Gender
-        if (!gender) {
-            alert('❌ Please select your gender.');
-            return false;
-        }
-
-        // Success Message
-        var genderValue = gender.value;
-        var message = "✅ Registration Successful!\n\n";
-        message += "📝 Name: " + name + "\n";
-        message += "📧 Email: " + email + "\n";
-        message += "📞 Phone: " + phone + "\n";
-        message += "👤 Gender: " + genderValue + "\n\n";
-        message += "🌍 Welcome to LingoSphere Premium! Start learning today!";
-
-        alert(message);
-
-        document.getElementById('registrationForm').reset();
+        showPopup('🎉', 'Registered!', 'Name: ' + n + '\nEmail: ' + e + '\nPhone: ' + p + '\nGender: ' + g.value);
+        document.getElementById('regForm').reset();
         return false;
     }
 </script>
-
 </body>
-    </html>
+</html>
