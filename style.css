@@ -1,0 +1,79 @@
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.regex.Pattern;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/RegisterServlet")
+public class RegisterServlet extends HttpServlet {
+
+    private static final Pattern EMAIL_PATTERN =
+            Pattern.compile("^[\\w.%+-]+@[\\w.-]+\\.[a-zA-Z]{2,}$");
+    private static final Pattern PHONE_PATTERN = Pattern.compile("^\\d{10,}$");
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        String gender = request.getParameter("gender");
+
+        StringBuilder errors = new StringBuilder();
+        boolean isValid = true;
+
+        if (name == null || name.trim().length() < 3) {
+            errors.append("<li>Name must be at least 3 characters.</li>");
+            isValid = false;
+        }
+        if (email == null || !EMAIL_PATTERN.matcher(email.trim()).matches()) {
+            errors.append("<li>Please provide a valid email address.</li>");
+            isValid = false;
+        }
+        if (phone == null || !PHONE_PATTERN.matcher(phone.trim()).matches()) {
+            errors.append("<li>Phone number must be at least 10 digits.</li>");
+            isValid = false;
+        }
+        if (gender == null || gender.trim().isEmpty()) {
+            errors.append("<li>Please select a gender.</li>");
+            isValid = false;
+        }
+
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+        out.println("<!DOCTYPE html>");
+        out.println("<html><head><link rel='stylesheet' href='style.css'></head><body>");
+        out.println("<div class='container'>");
+
+        if (isValid) {
+            // In a real app: save this Student object to a database here.
+            out.println("<h2>✅ Registration Successful</h2>");
+            out.println("<div class='form-box'>");
+            out.println("<p><b>Name:</b> " + escapeHtml(name) + "</p>");
+            out.println("<p><b>Email:</b> " + escapeHtml(email) + "</p>");
+            out.println("<p><b>Phone:</b> " + escapeHtml(phone) + "</p>");
+            out.println("<p><b>Gender:</b> " + escapeHtml(gender) + "</p>");
+            out.println("</div>");
+            out.println("<p>🌍 Welcome to LingoSphere! Start learning today!</p>");
+        } else {
+            out.println("<h2>❌ Registration Failed</h2>");
+            out.println("<div class='form-box'><ul>" + errors + "</ul></div>");
+        }
+
+        out.println("<p style='text-align:center;margin-top:1rem;'><a href='index.html'>Back to LingoSphere</a></p>");
+        out.println("</div></body></html>");
+    }
+
+    // Basic protection against reflecting raw user input back into HTML
+    private String escapeHtml(String input) {
+        return input.replace("&", "&amp;")
+                    .replace("<", "&lt;")
+                    .replace(">", "&gt;")
+                    .replace("\"", "&quot;");
+    }
+}
