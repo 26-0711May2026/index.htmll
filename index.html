@@ -117,6 +117,10 @@
         .btn:hover {
             background: #6a1b9a;
         }
+        .btn:disabled {
+            background: #9575cd;
+            cursor: not-allowed;
+        }
         footer {
             background: #4a148c;
             color: white;
@@ -349,7 +353,7 @@
         <a name="register"></a>
         <h2>📝 Student Registration</h2>
         <div class="form-box">
-            <form onsubmit="return validateForm()">
+            <form id="regForm" onsubmit="return handleRegister(event)">
                 <label for="name">Full Name:</label>
                 <input type="text" id="name" name="name" placeholder="Enter your full name" required>
 
@@ -369,7 +373,7 @@
                     <label for="other">Other</label>
                 </div>
 
-                <button type="submit" class="btn">Register Now</button>
+                <button type="submit" class="btn" id="submitBtn">Register Now</button>
             </form>
         </div>
 
@@ -392,7 +396,15 @@
 
     </div>
 
+    <!-- SUPABASE CLIENT LIBRARY -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script>
+        // ---- SUPABASE SETUP ----
+        const SUPABASE_URL = "https://lewgqjfnxofuasymccxp.supabase.co";
+        const SUPABASE_KEY = "sb_publishable_x3-TtVe2l3Q_L4gFruLe2g_4fEjAXlf";
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
         // 1. POPUP WELCOME MESSAGE (REAL POPUP, NOT ALERT)
         window.onload = function() {
             document.getElementById('welcomePopup').style.display = 'flex';
@@ -410,7 +422,7 @@
             }
         };
 
-        // 2. FORM VALIDATION
+        // 2. FORM VALIDATION (returns true/false, no submission side effects)
         function validateForm() {
             let name = document.getElementById('name').value.trim();
             let email = document.getElementById('email').value.trim();
@@ -450,19 +462,54 @@
                 isValid = false;
             }
 
-            if (isValid) {
-                alert("✅ Registration Successful!\n\n" +
-                      "Name: " + name + "\n" +
-                      "Email: " + email + "\n" +
-                      "Phone: " + phone + "\n" +
-                      "Gender: " + gender.value + "\n\n" +
-                      "🌍 Welcome to LingoSphere! Start learning today!");
-                document.getElementById('regForm').reset();
-                return false;
-            } else {
+            if (!isValid) {
                 alert("❌ Validation Errors:\n\n" + errorMessage);
+            }
+
+            return isValid;
+        }
+
+        // 3. HANDLE SUBMIT -> VALIDATE -> INSERT INTO SUPABASE
+        async function handleRegister(event) {
+            event.preventDefault();
+
+            if (!validateForm()) {
                 return false;
             }
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Registering...";
+
+            const { data, error } = await supabaseClient
+                .from('registrations')
+                .insert([
+                    { name: name, email: email, phone: phone, gender: gender }
+                ]);
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Register Now";
+
+            if (error) {
+                console.error(error);
+                alert("❌ Something went wrong saving your registration:\n\n" + error.message);
+                return false;
+            }
+
+            alert("✅ Registration Successful!\n\n" +
+                  "Name: " + name + "\n" +
+                  "Email: " + email + "\n" +
+                  "Phone: " + phone + "\n" +
+                  "Gender: " + gender + "\n\n" +
+                  "🌍 Welcome to LingoSphere! Start learning today!");
+
+            document.getElementById('regForm').reset();
+            return false;
         }
     </script>
 
